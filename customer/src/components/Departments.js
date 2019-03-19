@@ -1,11 +1,15 @@
 import React from 'react';
 import {Header, Card, } from 'semantic-ui-react';
+import axios from 'axios';
 
 class Departments extends React.Component {
     state = {departments: [], };
 
     componentDidMount() {
-
+        axios.get("/api/departments")
+            .then( res => {
+                this.setState({departments: res.data, })
+            })
     }
 
     renderDepartments = () => {
